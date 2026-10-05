@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Automação e gestão para escritórios contábeis. Aumente a produtividade, organize processos e reduza tarefas manuais.">
+<title>Ottimizza — Automação Contábil</title>
+<style>
+:root{
+  --blue:#1667ff;--blue2:#0d47c9;--dark:#10213f;--text:#24344d;
+  --muted:#66748a;--bg:#f6f9ff;--white:#fff;--line:#e4eaf3;
+  --radius:20px;--shadow:0 15px 45px rgba(21,48,93,.10)
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,Arial,Helvetica,sans-serif;color:var(--text);line-height:1.6;background:#fff}
+a{text-decoration:none;color:inherit}
+img{max-width:100%;display:block}
+.container{width:min(1160px,92%);margin:auto}
+header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.94);backdrop-filter:blur(12px);border-bottom:1px solid #edf1f7}
+.nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:25px}
+.logo{font-size:25px;font-weight:900;letter-spacing:-1px;color:var(--dark)}
+.logo span{color:var(--blue)}
+nav{display:flex;align-items:center;gap:26px;font-size:14px;font-weight:700}
+nav a:hover{color:var(--blue)}
+.btn{display:inline-flex;align-items:center;justify-content:center;border:0;border-radius:10px;padding:14px 22px;background:var(--blue);color:#fff;font-weight:800;cursor:pointer;transition:.2s}
+.btn:hover{background:var(--blue2);transform:translateY(-1px)}
+.btn.outline{background:#fff;color:var(--blue);border:1px solid #cfe0ff}
+.menu{display:none;background:none;border:0;font-size:28px}
+.hero{background:linear-gradient(135deg,#f4f8ff 0%,#fff 55%,#eef5ff 100%);padding:95px 0 80px;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:55px}
+.eyebrow{color:var(--blue);font-weight:900;text-transform:uppercase;font-size:13px;letter-spacing:1.4px;margin-bottom:16px}
+h1{font-size:clamp(40px,5vw,67px);line-height:1.02;letter-spacing:-2.8px;color:var(--dark);margin-bottom:23px}
+.hero p{font-size:19px;color:var(--muted);max-width:610px;margin-bottom:30px}
+.actions{display:flex;gap:12px;flex-wrap:wrap}
+.dashboard{position:relative;background:#fff;border:1px solid #e6ecf5;border-radius:26px;box-shadow:var(--shadow);padding:18px;transform:rotate(1deg)}
+.window{border-radius:17px;background:#f5f8fd;padding:18px}
+.window-top{display:flex;gap:7px;margin-bottom:18px}.dot{width:9px;height:9px;border-radius:50%;background:#cbd5e4}
+.mock-title{font-weight:900;color:var(--dark);margin-bottom:12px}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.mini{background:#fff;border:1px solid #e7edf5;padding:16px;border-radius:14px}
+.mini strong{display:block;font-size:25px;color:var(--blue)}.bar{height:8px;background:#dfe8f7;border-radius:8px;margin-top:10px;overflow:hidden}.bar i{display:block;height:100%;background:var(--blue);border-radius:8px}
+section{padding:88px 0}
+.section-head{text-align:center;max-width:760px;margin:0 auto 45px}
+.section-head h2{font-size:clamp(30px,4vw,45px);line-height:1.1;color:var(--dark);letter-spacing:-1.5px;margin-bottom:15px}
+.section-head p{color:var(--muted);font-size:17px}
+.pills{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-bottom:42px}
+.pill{padding:11px 18px;border-radius:999px;background:#eef4ff;color:var(--blue);font-weight:800}
+.features{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.feature{padding:30px;border:1px solid var(--line);border-radius:var(--radius);background:#fff;box-shadow:0 8px 28px rgba(28,56,100,.05)}
+.icon{width:48px;height:48px;display:grid;place-items:center;border-radius:14px;background:#eaf2ff;color:var(--blue);font-size:22px;margin-bottom:18px}
+.feature h3{color:var(--dark);margin-bottom:8px;font-size:19px}.feature p{color:var(--muted);font-size:15px}
+.blue-section{background:var(--dark);color:#fff}
+.blue-section h2{color:#fff}.blue-section .section-head p{color:#bdc9dc}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:55px;align-items:center}
+.split h2{font-size:clamp(32px,4vw,48px);line-height:1.08;margin-bottom:20px}
+.split p{color:#c3cee0;margin-bottom:25px}
+.checks{display:grid;gap:12px}.checks div{display:flex;gap:10px;align-items:flex-start}.checks b{color:#72a8ff}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin-top:35px}
+.stat{padding:22px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:16px}.stat strong{font-size:31px;display:block}.stat span{color:#b7c5da;font-size:13px}
+.form-section{background:var(--bg)}
+.form-box{background:#fff;border:1px solid var(--line);border-radius:25px;box-shadow:var(--shadow);padding:40px;max-width:900px;margin:auto}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.field{display:flex;flex-direction:column;gap:7px}.field.full{grid-column:1/-1}
+label{font-weight:800;font-size:13px;color:var(--dark)}
+input,select{width:100%;border:1px solid #d9e1ed;border-radius:10px;padding:14px 15px;font:inherit;outline:0;background:#fff}
+input:focus,select:focus{border-color:var(--blue);box-shadow:0 0 0 3px #e9f1ff}
+.error{color:#d93434;font-size:12px;min-height:17px}.success{display:none;margin-top:15px;padding:12px;background:#eaf9f0;color:#19733e;border-radius:10px;font-weight:700}
+.testimonials{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.quote{padding:28px;border:1px solid var(--line);border-radius:18px;background:#fff}.quote p{font-style:italic;color:var(--muted);margin-bottom:20px}.quote strong{color:var(--dark)}
+.cta{padding:70px 0;background:linear-gradient(135deg,#1261ed,#0a3eaa);color:#fff;text-align:center}.cta h2{font-size:42px;line-height:1.1;margin-bottom:14px}.cta p{color:#dbe7ff;margin-bottom:25px}
+footer{background:#0b1730;color:#b7c3d6;padding:55px 0 25px}.footer-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:45px}.footer-title{color:#fff;font-weight:900;margin-bottom:14px}.footer-links{display:grid;gap:8px;font-size:14px}.footer-links a:hover{color:#fff}.copyright{border-top:1px solid #22304a;margin-top:40px;padding-top:20px;font-size:13px}
+@media(max-width:800px){
+ nav{display:none}.menu{display:block}.hero{padding:65px 0}.hero-grid,.split{grid-template-columns:1fr}.features,.testimonials{grid-template-columns:1fr}.stats{grid-template-columns:1fr 1fr}.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.footer-grid{grid-template-columns:1fr}.dashboard{transform:none}h1{letter-spacing:-1.8px}
+}
+@media(max-width:500px){.stats{grid-template-columns:1fr}.form-box{padding:24px}.hero p{font-size:17px}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <a class="logo" href="#">ottim<span>i</span>zza</a>
+    <nav>
+      <a href="#solucoes">Soluções</a>
+      <a href="#integracao">Integração</a>
+      <a href="#tarefas">Gestão</a>
+      <a href="#depoimentos">Depoimentos</a>
+      <a class="btn" href="#demo">Solicitar demonstração</a>
+    </nav>
+    <button class="menu" onclick="toggleMenu()" aria-label="Abrir menu">☰</button>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <div class="eyebrow">Automação contábil</div>
+      <h1>Potencialize a produtividade do seu escritório.</h1>
+      <p>Automatize processos, organize tarefas e transforme horas de trabalho manual em tempo para analisar, crescer e atender melhor seus clientes.</p>
+      <div class="actions">
+        <a class="btn" href="#demo">Fale com nossa equipe</a>
+        <a class="btn outline" href="#solucoes">Conheça as soluções</a>
+      </div>
+    </div>
+    <div class="dashboard" aria-label="Demonstração visual">
+      <div class="window">
+        <div class="window-top"><i class="dot"></i><i class="dot"></i><i class="dot"></i></div>
+        <div class="mock-title">Painel de produtividade</div>
+        <div class="cards">
+          <div class="mini"><small>Processos</small><strong>2.184</strong><div class="bar"><i style="width:82%"></i></div></div>
+          <div class="mini"><small>Concluídos</small><strong>1.936</strong><div class="bar"><i style="width:91%"></i></div></div>
+          <div class="mini"><small>Clientes</small><strong>480</strong><div class="bar"><i style="width:68%"></i></div></div>
+          <div class="mini"><small>Automação</small><strong>87%</strong><div class="bar"><i style="width:87%"></i></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="solucoes">
+  <div class="container">
+    <div class="section-head">
+      <h2>Automação e gestão para escritórios contábeis</h2>
+      <p>Centralize sua operação e ganhe produtividade com ferramentas pensadas para a rotina contábil.</p>
+    </div>
+    <div class="pills"><span class="pill">Meu Integrador</span><span class="pill">Integra+</span><span class="pill">Busca Extrato</span><span class="pill">Tareffa</span><span class="pill">Atendimento</span></div>
+    <div class="features">
+      <article class="feature"><div class="icon">⚡</div><h3>Integração contábil</h3><p>Transforme dados financeiros em lançamentos contábeis de maneira rápida e organizada.</p></article>
+      <article class="feature"><div class="icon">✓</div><h3>Gestão de tarefas</h3><p>Acompanhe serviços, obrigações e prazos em tempo real, reduzindo riscos e atrasos.</p></article>
+      <article class="feature"><div class="icon">▣</div><h3>Atendimento centralizado</h3><p>Organize conversas e histórico dos clientes em um único fluxo de atendimento.</p></article>
+    </div>
+  </div>
+</section>
+
+<section id="integracao" class="blue-section">
+  <div class="container split">
+    <div>
+      <div class="eyebrow" style="color:#72a8ff">Integração contábil</div>
+      <h2>Menos digitação. Mais produtividade.</h2>
+      <p>Automatize o trabalho operacional e concentre sua equipe no que realmente gera valor.</p>
+      <div class="checks">
+        <div><b>✓</b> Integrações ilimitadas</div>
+        <div><b>✓</b> Busca automática de extratos</div>
+        <div><b>✓</b> Cruzamento de extratos</div>
+        <div><b>✓</b> Regras inteligentes de De/Para</div>
+        <div><b>✓</b> Importação de planos de contas</div>
+        <div><b>✓</b> Leitura de CSV, PDF, TXT, OFX e Excel</div>
+      </div>
+    </div>
+    <div>
+      <div class="window" style="background:#172a4b;border:1px solid #294266">
+        <div class="mock-title" style="color:#fff">Resultados da automação</div>
+        <div class="stats">
+          <div class="stat"><strong>+35 mil</strong><span>Contadores</span></div>
+          <div class="stat"><strong>+2.100</strong><span>Contabilidades</span></div>
+          <div class="stat"><strong>+70%</strong><span>Menos digitação</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="tarefas">
+  <div class="container split">
+    <div>
+      <div class="eyebrow">Gestão de serviços</div>
+      <h2>Tenha sua contabilidade em tempo real.</h2>
+      <p>Gerencie obrigações, processos, agendas e comunicação com seus clientes em um só lugar.</p>
+      <a class="btn" href="#demo">Solicitar demonstração</a>
+    </div>
+    <div class="features" style="grid-template-columns:1fr 1fr">
+      <article class="feature"><div class="icon">◷</div><h3>Dashboards</h3><p>Indicadores em tempo real.</p></article>
+      <article class="feature"><div class="icon">✓</div><h3>Obrigações</h3><p>Controle de prazos e serviços.</p></article>
+      <article class="feature"><div class="icon">↗</div><h3>Automação</h3><p>Geração e baixa de serviços.</p></article>
+      <article class="feature"><div class="icon">☏</div><h3>Comunicação</h3><p>App, WhatsApp e e-mail.</p></article>
+    </div>
+  </div>
+</section>
+
+<section id="depoimentos" style="background:var(--bg)">
+  <div class="container">
+    <div class="section-head"><h2>O que nossos clientes dizem</h2><p>Resultados reais de escritórios que reduziram tarefas manuais e ganharam produtividade.</p></div>
+    <div class="testimonials">
+      <article class="quote"><p>“Eliminamos trabalhos manuais e repetitivos e conseguimos focar muito mais na análise.”</p><strong>Jailson Alves</strong><br><small>iGO Gestão Inteligente</small></article>
+      <article class="quote"><p>“Comecei com um mercado grande, levava alguns dias e hoje a gente faz em pouquíssimo tempo.”</p><strong>Elizangela de Paula</strong><br><small>De Paula Contabilidade</small></article>
+      <article class="quote"><p>“Nosso trabalho está sendo voltado para análise e conferência e não mais digitação.”</p><strong>Raquel Bellaver</strong><br><small>TCA Digital</small></article>
+    </div>
+  </div>
+</section>
+
+<section id="demo" class="form-section">
+  <div class="container">
+    <div class="section-head"><h2>Dê o primeiro passo 🚀</h2><p>Preencha seus dados e nossa equipe entrará em contato.</p></div>
+    <div class="form-box">
+      <form id="leadForm" onsubmit="enviarForm(event)">
+        <div class="form-grid">
+          <div class="field"><label>Nome *</label><input required name="nome" placeholder="Seu nome"></div>
+          <div class="field"><label>E-mail *</label><input required type="email" name="email" placeholder="voce@empresa.com"></div>
+          <div class="field"><label>Celular *</label><input required name="celular" placeholder="(00) 00000-0000" maxlength="15"></div>
+          <div class="field"><label>Empresa *</label><input required name="empresa" placeholder="Nome da empresa"></div>
+          <div class="field"><label>CNPJ *</label><input required id="cnpj" name="cnpj" placeholder="00.000.000/0000-00" maxlength="18" oninput="mascaraCNPJ(this)"><span class="error" id="cnpjError"></span></div>
+          <div class="field"><label>Solução *</label><select required><option value="">Selecione</option><option>Integração Contábil</option><option>Gestão de Tarefas</option><option>Atendimento</option><option>Busca Extrato</option></select></div>
+          <div class="field full"><label>Mensagem</label><input name="mensagem" placeholder="Como podemos ajudar?"></div>
+          <div class="field full"><button class="btn" type="submit">Fale com nossa equipe</button></div>
+        </div>
+        <div class="success" id="success">Dados validados! Este formulário é demonstrativo e ainda não envia os dados para um servidor.</div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="container">
+    <h2>Pronto para ganhar produtividade?</h2>
+    <p>Conheça uma nova forma de administrar os processos do seu escritório.</p>
+    <a class="btn" style="background:#fff;color:var(--blue)" href="#demo">Solicitar demonstração</a>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="container footer-grid">
+    <div><div class="logo" style="color:#fff">ottim<span>i</span>zza</div><p style="margin-top:12px">Automação e gestão para escritórios contábeis.</p></div>
+    <div><div class="footer-title">Soluções</div><div class="footer-links"><a href="#integracao">Integração Contábil</a><a href="#tarefas">Gestão de Tarefas</a><a href="#solucoes">Busca Extrato</a><a href="#solucoes">Atendimento</a></div></div>
+    <div><div class="footer-title">Contato</div><div class="footer-links"><span>(47) 3620-0600</span><span>Rua Bela Vista, nº 18</span><span>Saguaçu, Joinville/SC</span><span>CEP 89.221-060</span></div></div>
+  </div>
+  <div class="container copyright">© 2026 — Página demonstrativa independente. Substitua os dados empresariais antes de publicar.</div>
+</footer>
+
+<script>
+function toggleMenu(){
+  const nav=document.querySelector('nav');
+  nav.style.display=nav.style.display==='flex'?'none':'flex';
+  if(nav.style.display==='flex'){nav.style.position='absolute';nav.style.top='76px';nav.style.left='0';nav.style.right='0';nav.style.padding='20px';nav.style.background='#fff';nav.style.flexDirection='column';nav.style.borderBottom='1px solid #eee'}
+}
+function mascaraCNPJ(input){
+  let v=input.value.replace(/\D/g,'').slice(0,14);
+  v=v.replace(/^(\d{2})(\d)/,'$1.$2');
+  v=v.replace(/^(\d{2})\.(\d{3})(\d)/,'$1.$2.$3');
+  v=v.replace(/\.(\d{3})(\d)/,'.$1/$2');
+  v=v.replace(/(\d{4})(\d)/,'$1-$2');
+  input.value=v;
+}
+function validarCNPJ(cnpj){
+  cnpj=cnpj.replace(/\D/g,'');
+  if(cnpj.length!==14 || /^(\d)\1+$/.test(cnpj)) return false;
+  let calc=(base)=>{
+    let sum=0, pos=base.length-7;
+    for(let i=base.length;i>=1;i--){sum+=+base.charAt(base.length-i)*pos--;if(pos<2)pos=9}
+    let d=11-sum%11; return d>=10?0:d;
+  };
+  return calc(cnpj.slice(0,12))===+cnpj[12] && calc(cnpj.slice(0,13))===+cnpj[13];
+}
+function enviarForm(e){
+  e.preventDefault();
+  const input=document.getElementById('cnpj'), err=document.getElementById('cnpjError');
+  if(!validarCNPJ(input.value)){
+    err.textContent='Informe um CNPJ válido.';
+    input.focus();
+    return;
+  }
+  err.textContent='';
+  document.getElementById('success').style.display='block';
+}
+document.querySelector('[name="celular"]').addEventListener('input',function(){
+  let v=this.value.replace(/\D/g,'').slice(0,11);
+  if(v.length>6)v=v.replace(/^(\d{2})(\d{5})(\d)/,'($1) $2-$3');
+  else if(v.length>2)v=v.replace(/^(\d{2})(\d)/,'($1) $2');
+  this.value=v;
+});
+</script>
+</body>
+</html>
